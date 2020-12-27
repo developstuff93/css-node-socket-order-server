@@ -2,12 +2,12 @@ const fs = require('fs');
 const app = require('express')();
 const http = require('http').createServer(app);
 
-const localhostRegex = /http:\/\/localhost/
+// const localhostRegex = /http:\/\/localhost/
 const io = require('socket.io')(http, {
-  cors: { origin: localhostRegex }
+  cors: { origin: '*' }
 });
 
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 const DATA_FILE = __dirname + '/order-data.json';
 
 // Initialize order data.
